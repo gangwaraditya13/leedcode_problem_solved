@@ -13,11 +13,11 @@ class Main {
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
         int i=0,j=0;
-        Set<Integer> intersection = new HashSet<>();
+        Set<Integer> intersectionarr = new HashSet<>();
         while(i < nums1.length){
             if(j < nums2.length){
                 if(nums1[i] == nums2[j]){
-                    intersection.add(nums1[i]);
+                    intersectionarr.add(nums1[i]);
                     j++;
                 }else{
                     j++;
@@ -27,10 +27,10 @@ class Solution {
                 j=0;
             }
         }
-        if(intersection.size() > 0) {
-            int[] finaluni = new int[intersection.size()];
+        if(intersectionarr.size() > 0) {
+            int[] finaluni = new int[intersectionarr.size()];
             int k = 0;
-            for (int u : intersection) {
+            for (int u : intersectionarr) {
                 finaluni[k] = u;
                 k++;
             }
