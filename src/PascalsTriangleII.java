@@ -1,41 +1,32 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class PascalsTriangle {
+public class PascalsTriangleII {
     public static void main(String[] args){
-        SolutionPascals pascals = new SolutionPascals();
-        System.out.println(pascals.generate(5));
+        SolutionPascalsII pascals = new SolutionPascalsII();
+        System.out.println(pascals.getRow(3));
     }
 }
 
-class SolutionPascals {
-    public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> listArrayList = new ArrayList<>();
+class SolutionPascalsII {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> row = new ArrayList<>();
 
-        for (int i = 1; i <= numRows; i++) {
-            if (i == 1) {
-                List<Integer> nums = new ArrayList<>();
-                nums.add(1);
-                listArrayList.add(nums);
-            } else if (i == 2) {
-                List<Integer> nums = new ArrayList<>();
-                nums.add(1);
-                nums.add(1);
-                listArrayList.add(nums);
-            } else {
-                List<Integer> nums = new ArrayList<>();
-                List<Integer> prev = listArrayList.get(i - 2);
+        // Initialize row with 1
+        for (int i = 0; i <= rowIndex; i++) {
+            row.add(1);
+        }
 
-                nums.add(1);
-
-                for (int j = 1; j < prev.size(); j++) {
-                    nums.add(prev.get(j - 1) + prev.get(j));
-                }
-
-                nums.add(1);
-                listArrayList.add(nums);
+        // Update row in place
+        // Start from row 2 because row 0 and 1 are already correct
+        for (int i = 2; i <= rowIndex; i++) {
+            // Update from the end to avoid overwriting needed values
+            for (int j = i - 1; j > 0; j--) {
+                row.set(j, row.get(j) + row.get(j - 1));
             }
         }
-        return listArrayList;
+
+        return row;
     }
+
 }
