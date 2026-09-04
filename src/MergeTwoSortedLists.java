@@ -33,14 +33,12 @@ class SolutionMergeTwoSortedLists {
             if(list1 == null && corrent2 != null){
                 int val = corrent2.val;
                 ListNode newNode = new ListNode(val);
-                System.out.println(val);
                 corrent.next = newNode;
                 corrent = newNode;
                 corrent2 = corrent2.next;
             } else if (list2 == null && corrent1 != null) {
                 int val = corrent1.val;
                 ListNode newNode = new ListNode(val);
-                System.out.println(val);
                 corrent.next = newNode;
                 corrent = newNode;
                 corrent1 = corrent1.next;
