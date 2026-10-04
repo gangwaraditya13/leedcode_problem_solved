@@ -2,7 +2,8 @@ import java.util.Arrays;
 
 public class ArrayPartition {
     static public void main(String[] args){
-
+        SolutionArrayPartition arrayPartition = new SolutionArrayPartition();
+        System.out.println(arrayPartition.arrayPairSum(new int[]{1,4,3,2}));
     }
 }
 
