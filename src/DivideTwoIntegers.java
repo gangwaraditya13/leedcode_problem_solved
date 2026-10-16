@@ -1,0 +1,35 @@
+public class DivideTwoIntegers {
+    static public void main(String[] args){
+        SolutionDivideTwoIntegers divideTwoIntegers = new SolutionDivideTwoIntegers();
+        System.out.println(divideTwoIntegers.divide(10,3));
+    }
+}
+
+class SolutionDivideTwoIntegers {
+    public int divide(int dividend, int divisor) {
+        if (dividend == Integer.MIN_VALUE && divisor == -1) {
+            return Integer.MAX_VALUE;
+        }
+
+        long a = Math.abs((long) dividend);
+        long b = Math.abs((long) divisor);
+
+        boolean negative = (dividend < 0) ^ (divisor < 0);
+        long quotient = 0;
+
+        while (a >= b) {
+            long temp = b;
+            long multiple = 1;
+
+            while (a >= (temp << 1)) {
+                temp <<= 1;
+                multiple <<= 1;
+            }
+
+            a -= temp;
+            quotient += multiple;
+        }
+
+        return (int) (negative ? -quotient : quotient);
+    }
+}
